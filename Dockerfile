@@ -161,11 +161,11 @@ RUN chown odoo /docker-entrypoint.sh \
     && chown odoo -R "$ODOO_CONFIG_DIR"
 
 # Move binary to new location and symlink old
-#RUN if [ "$ODOO_VERSION" != "10.0" ]; \
-#    then \
-#        mv /usr/local/bin/openerp-server /usr/local/bin/odoo && \
-#        ln -s /usr/local/bin/odoo /usr/local/bin/openerp-server; \
-#    fi
+RUN if [ "$ODOO_VERSION" != "10.0" ]; \
+    then \
+        mv /usr/local/bin/openerp-server /usr/local/bin/odoo && \
+        ln -s /usr/local/bin/odoo /usr/local/bin/openerp-server; \
+    fi
 
 # Fix stack size overflow
 # https://github.com/python-pillow/Pillow/issues/1935
